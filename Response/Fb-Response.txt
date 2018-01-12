@@ -1,0 +1,49 @@
+{
+  "id": "xxx",
+  "timestamp": "2016-08-19T09:53:16.876Z",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "assault rifles",
+    "action": "image_url",
+    "actionIncomplete": false,
+    "parameters": {
+      "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
+    },
+    "contexts": [
+      {
+        "name": "r6s",
+        "parameters": {
+          "url.original": "",
+          "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
+        },
+        "lifespan": 996
+      }
+    ],
+    "metadata": {
+      "intentId": "xxx",
+      "webhookUsed": "true",
+      "intentName": "R6S Assault Rifles"
+    },
+    "fulfillment": {
+      "speech": "Here you go: ",
+      "source": "www.testclan.com",
+      "displayText": "Here you go: ",
+      "data": {
+        "facebook": {
+          "attachment": {
+            "type": "image",
+            "payload": {
+              "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
+            }
+          }
+        }
+      }
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success"
+  },
+  "sessionId": "xxx"
+}
