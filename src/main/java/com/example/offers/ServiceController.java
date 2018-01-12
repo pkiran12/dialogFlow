@@ -3,12 +3,9 @@
  */
 package com.example.offers;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,27 +26,26 @@ public class ServiceController {
   @Autowired
   org.springframework.core.io.ResourceLoader loader;
 
-  @RequestMapping(method = RequestMethod.GET, produces = "application/json")
-  public WebhookResponse greeting() {
+  @RequestMapping(method = RequestMethod.POST, produces = "application/json")
+  public WebhookResponse greeting(@RequestBody String obj) {
 
-//    @RequestBody String obj
-//    String offers = invokeOffers(obj);
+    String offers = invokeOffers(obj);
 
     WebhookResponse response = null;
 
-    String offers= getOffers("movies");
-    /*Resource resource = loader.getResource("classpath:facebook.json");
+    // String offers = getOffers("movies");
+    /*
+     * Resource resource = loader.getResource("classpath:facebook.json");
+     * 
+     * try { InputStream inputStream = resource.getInputStream();
+     * 
+     * return response = new WebhookResponse(ResourceLoader.getJson(inputStream),
+     * ResourceLoader.getJson(inputStream), ResourceLoader.getJson(inputStream));
+     * 
+     * } catch (IOException e) { System.out.println("Exception while loading file " +
+     * e.getMessage()); }
+     */
 
-    try {
-      InputStream inputStream = resource.getInputStream();
-
-      return response = new WebhookResponse(ResourceLoader.getJson(inputStream),
-          ResourceLoader.getJson(inputStream), ResourceLoader.getJson(inputStream));
-
-    } catch (IOException e) {
-      System.out.println("Exception while loading file " + e.getMessage());
-    }*/
-    
     response = new WebhookResponse(offers, offers, "");
 
     return response;

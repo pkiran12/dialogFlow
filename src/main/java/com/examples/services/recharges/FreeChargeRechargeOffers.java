@@ -50,9 +50,7 @@ public class FreeChargeRechargeOffers implements RechargeOffersItf {
     offerStringBuilder.append("\n");
     getFreechargeOffers(offerStringBuilder);
   }
-  
-  
-  
+
   @SuppressWarnings("unchecked")
   private void getFreechargeOffers(StringBuilder builder) {
 
@@ -109,22 +107,26 @@ public class FreeChargeRechargeOffers implements RechargeOffersItf {
 
           )
           .forEach(offerMap -> {
+            try {
 
-            System.out.println(offerMap.get("description"));
+              System.out.println(offerMap.get("description"));
 
-            Map<String, Object> genericMap = (Map<String, Object>) offerMap.get("offerParams");
+              Map<String, Object> genericMap = (Map<String, Object>) offerMap.get("offerParams");
 
-            Object vale = genericMap.computeIfPresent("genericPromocode",
-                (key, value) -> processPromocode(value, "Promo Code"));
+              Object vale = genericMap.computeIfPresent("genericPromocode",
+                  (key, value) -> processPromocode(value, "Promo Code"));
 
-            Object minAmount = genericMap.computeIfPresent("txnAmount",
-                (key, value) -> processPromocode(value, "Minimum Txn Amount"));
+              Object minAmount = genericMap.computeIfPresent("txnAmount",
+                  (key, value) -> processPromocode(value, "Minimum Txn Amount"));
 
-            builder.append("\n");
-            builder.append(vale.toString());
-            builder.append("\n");
-            builder.append(minAmount.toString());
-            builder.append("\n");
+              builder.append("\n");
+              builder.append(vale.toString());
+              builder.append("\n");
+              builder.append(minAmount.toString());
+              builder.append("\n");
+            } catch (Exception e) {
+
+            }
           });
 
     } catch (IOException e) {
@@ -132,7 +134,7 @@ public class FreeChargeRechargeOffers implements RechargeOffersItf {
     }
 
   }
-  
+
   private static String processPromocode(Object value, String word) {
     System.out.println(value.toString());
     return value.toString() + " " + word;
